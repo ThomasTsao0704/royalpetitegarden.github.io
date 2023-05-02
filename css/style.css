@@ -1,0 +1,338 @@
+@import url("https://fonts.googleapis.com/css2?family=Prata&display=swap");
+
+* {
+    margin: 0;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#app {
+    z-index: 100;
+    position: relative;
+    overflow: hidden;
+}
+
+#app:hover {
+    opacity: 0.5;
+}
+
+#app {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    /* padding-bottom: 4vmin; */
+    height: 100vh;
+    width: 100%;
+    background: #ede8e2;
+    color: #3a3535;
+}
+
+body {
+    display: grid;
+    /* padding: 0 10px; */
+    background: #e6ded7;
+}
+
+.title {
+    padding-left: 1em;
+    grid-column: 1/-1;
+    grid-row: 1;
+    font-family: "Prata", serif;
+    font-size: 8vw;
+    width: 100%;
+    z-index: 2;
+}
+
+.title>.title-inner {
+    display: inline-block;
+}
+
+@-webkit-keyframes text-clip {
+    from {
+        -webkit-clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+        clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+
+    to {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+@keyframes text-clip {
+    from {
+        -webkit-clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+        clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    }
+
+    to {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+@-webkit-keyframes outer-left {
+    from {
+        transform: translateX(50%);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+@keyframes outer-left {
+    from {
+        transform: translateX(50%);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+@-webkit-keyframes inner-left {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+@keyframes inner-left {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: none;
+    }
+}
+
+.cafe,
+.mozart {
+    -webkit-animation: outer-left 1s 1s cubic-bezier(0.5, 0, 0.1, 1) both;
+    animation: outer-left 1s 1s cubic-bezier(0.5, 0, 0.1, 1) both;
+}
+
+.title-inner {
+    display: inline-block;
+    -webkit-animation: inner-left 1s 1s ease both;
+    animation: inner-left 1s 1s ease both;
+}
+
+.cafe-inner {
+    display: inline-block;
+    -webkit-animation: inner-left 1s 1s ease both, text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+    animation: inner-left 1s 1s ease both, text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+}
+
+.mozart-inner {
+    -webkit-animation: text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+    animation: text-clip 1s 0s cubic-bezier(0.5, 0, 0.1, 1) both;
+}
+
+.title {
+    -webkit-animation: outer-left 1s 1s ease both;
+    animation: outer-left 1s 1s ease both;
+}
+
+.cafe>.cafe-inner {
+    display: inline-block;
+}
+
+.mozart {
+    display: inline-block;
+}
+
+.image {
+    grid-row: 1;
+    grid-column: 2;
+    margin-left: -2rem;
+    opacity: 0.7;
+    -webkit-animation: image-in 1s cubic-bezier(0.5, 0, 0.1, 1) 2s backwards;
+    animation: image-in 1s cubic-bezier(0.5, 0, 0.1, 1) 2s backwards;
+}
+
+@-webkit-keyframes image-in {
+    from {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    to {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+@keyframes image-in {
+    from {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    to {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+}
+
+.image {
+    top: -300px;
+}
+.image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+body:active * {
+    -webkit-animation: none !important;
+    animation: none !important;
+}
+
+/* --------------- */
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5 {
+    color: #3a3535;
+    font-family: 'Lora';
+}
+
+body h1 {
+    font-size: 90px;
+    line-height: 1.1;
+}
+
+@media screen and (max-width: 40em) {
+    body h1 {
+        font-size: 50px;
+        line-height: 1.25;
+    }
+}
+
+body h2 {
+    font-size: 40px;
+    line-height: 1.3;
+}
+
+@media screen and (max-width: 40em) {
+    body h2 {
+        font-size: 28px;
+        line-height: 1.4;
+    }
+}
+
+body h4 {
+    font-size: 24px;
+    margin-bottom: 0.3em;
+}
+
+body p {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.container {
+    width: 100%;
+    padding-top: 130px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: opacity 1s 2s;
+}
+
+.container.out {
+    opacity: 0;
+}
+
+.container>h1,
+.container>h2,
+.container>p {
+    position: relative;
+    z-index: 2;
+    width: 80%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fade {
+    transition: all 0.6s;
+}
+
+.fade.out {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.flow {
+    transition: all 0.8s;
+}
+
+.flow.out {
+    opacity: 0;
+}
+
+.flowcontent {
+    position: relative;
+}
+
+.flowcontent:before {
+    display: table;
+    content: '';
+    width: 1px;
+    height: 1200px;
+}
+
+.flowcontent .caption {
+    position: absolute;
+    border-radius: 3px;
+    /* padding: 20px; */
+    display: block;
+    top: 50%;
+    left: 10%;
+    z-index: 1;
+    transform: translateY(-50%);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.flowcontent .caption.right {
+    left: auto;
+    right: 10%;
+}
+
+.flowcontent .imageholder {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.flowcontent .imageholder.img1 {
+    background-image: url("https://dl.dropboxusercontent.com/u/8254962/rihanna-smoke.gif");
+}
+
+.flowcontent .imageholder.img2 {
+    background-image: url("https://dl.dropboxusercontent.com/u/8254962/pexels-photo-234078%401600px.jpeg");
+}
+
+.flowcontent video {
+    position: fixed;
+    /* min-height: 100%;
+    min-width: 100%;
+    top: 50%;
+    left: 50%; */
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 0;
+}
