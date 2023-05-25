@@ -1,0 +1,1429 @@
+/*
+ * contents.scss
+ *
+ * 記事詳細用コンポーネント
+ */
+
+.contents {
+
+    @extend .container;
+
+    h1 {
+        position: relative;
+        letter-spacing: 0;
+        @include responsive((font-size: 32,
+                line-height: 48,
+                margin-bottom: 48,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(24);
+            line-height: mycalcSP(36);
+            margin-bottom: mycalcSP(24);
+            box-sizing: border-box;
+        }
+    }
+
+    h2 {
+        width: 100%;
+        position: relative;
+        letter-spacing: 0;
+        @include responsive((font-size: 28,
+                line-height: 44,
+                margin-top: 80,
+                margin-bottom: 48,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(22);
+            line-height: mycalcSP(32);
+            margin-top: mycalcSP(64);
+            margin-bottom: mycalcSP(48);
+        }
+    }
+
+    h3 {
+        @extend .ttl_frame;
+    }
+
+    h4 {
+        @extend .ttl_beta;
+    }
+
+    h5 {
+        @extend .ttl_bar;
+    }
+
+    h6 {
+        @extend .ttl_bold;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    p,
+    li,
+    th,
+    td,
+    blockquote,
+    q {
+        letter-spacing: 0;
+        @include responsive((font-size: 16,
+                line-height: 40,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(16);
+            line-height: mycalcSP(36);
+        }
+
+        a {
+            color: $c_text;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    p,
+    ul,
+    ol,
+    table,
+    blockquote,
+    q {
+        &:not(:last-child) {
+            @include responsive((margin-bottom: 48,
+                ));
+
+            @include mq(sp) {
+                margin-bottom: mycalcSP(48);
+            }
+        }
+    }
+
+    li {
+        position: relative;
+        @include responsive((padding-left: 40,
+                line-height: 32,
+            ));
+
+        @include mq(sp) {
+            padding-left: mycalcSP(40);
+            line-height: mycalcSP(26);
+        }
+
+        &:not(:last-child) {
+            @include responsive((margin-bottom: 16,
+                ));
+
+            @include mq(sp) {
+                margin-bottom: mycalcSP(16);
+            }
+        }
+    }
+
+    ul {
+        >li:before {
+            content: "";
+            background: $c_brown;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            @include responsive((width: 8,
+                    height: 8,
+                    top: 8,
+                    left: 16,
+                ));
+
+            @include mq(sp) {
+                width: mycalcSP(8);
+                height: mycalcSP(8);
+                top: mycalcSP(11);
+                left: mycalcSP(16);
+            }
+        }
+    }
+
+    ol {
+        counter-reset: number;
+
+        >li {
+            counter-increment: number;
+            @include responsive((padding-left: 40,
+                ));
+
+            @include mq(sp) {
+                padding-left: mycalcSP(40);
+            }
+
+            &:before {
+                content: counter(number) ".";
+                font-family: $f_en;
+                position: absolute;
+                left: 0;
+                letter-spacing: 0;
+                color: $c_text;
+                @include responsive((top: 9,
+                        left: 16,
+                        font-size: 18,
+                        line-height: 18,
+                    ));
+
+                @include mq(sp) {
+                    top: mycalcSP(6);
+                    left: mycalcSP(16);
+                    font-size: mycalcSP(18);
+                    line-height: mycalcSP(18);
+                }
+            }
+        }
+    }
+
+    ul,
+    ol {
+
+        ul,
+        ol {
+            @include responsive((margin-top: 16,
+                    margin-bottom: 16,
+                ));
+
+            @include mq(sp) {
+                margin-top: mycalcSP(16);
+                margin-bottom: mycalcSP(16);
+            }
+        }
+    }
+
+    table {
+        width: auto;
+
+        tr {}
+
+        th,
+        td {
+            @include responsive((padding: 16 16,
+                ));
+
+            @include mq(sp) {
+                padding: mycalcSP(16 16);
+            }
+        }
+
+        th {
+            font-weight: bold;
+            font-family: $f_mincho;
+            border: 1px solid $c_border;
+            @include responsive((font-size: 16,
+                    line-height: 28,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(14);
+                line-height: mycalcSP(22);
+            }
+        }
+
+        td {
+            border: 1px solid $c_border;
+            @include responsive((font-size: 16,
+                    line-height: 28,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(14);
+                line-height: mycalcSP(22);
+            }
+        }
+    }
+
+    .table_wrap {
+        width: 100%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        box-sizing: border-box;
+
+        .scroll-hint-icon {
+            top: calc(50% - 50px);
+            left: calc(50% - 80px);
+            width: 160px;
+            height: 100px;
+            padding: 30px 10px 10px 10px;
+
+            &-wrap {
+                &:after {
+                    top: 14px;
+                }
+            }
+
+            &-white {
+                .scroll-hint-text {
+                    font-family: $f_gothic;
+                    color: $c_text;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    strong {
+        font-weight: bold;
+    }
+
+    blockquote,
+    q,
+    .quote {
+        position: relative;
+        display: inline-block;
+        color: $c_brown;
+        font-weight: bold;
+
+        @include responsive((padding: 40 24 32 40,
+            ));
+
+        @include mq(sp) {
+            padding: mycalcSP(40 16 16 16);
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            background-image: url("../images/common/ico/quote_l.svg");
+            background-size: contain;
+            @include responsive((width: 24,
+                    height: 24,
+                    top: 16,
+                    left: 16,
+                ));
+
+            @include mq(sp) {
+                width: mycalcSP(24);
+                height: mycalcSP(24);
+                top: mycalcSP(8);
+                left: mycalcSP(8);
+            }
+        }
+
+        >p {
+            color: $c_stone;
+            font-family: $f_mincho;
+            @include responsive((font-size: 16,
+                    line-height: 32,
+                    margin-bottom: 12,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(15);
+                line-height: mycalcSP(24);
+                margin-bottom: mycalcSP(16);
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .quote_from {
+            font-family: $f_gothic;
+            color: $c_brown;
+            @include responsive((font-size: 12,
+                    line-height: 18,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(12);
+                line-height: mycalcSP(18);
+            }
+        }
+    }
+
+    .wp-caption {
+        max-width: 100%;
+        @include responsive((margin-bottom: 48,
+            ));
+
+        @include mq(sp) {
+            margin-bottom: mycalcSP(40);
+        }
+
+        img {
+            @include responsive((margin-bottom: 16,
+                ));
+
+            @include mq(sp) {
+                margin-bottom: mycalcSP(16);
+            }
+        }
+
+        &-text {
+            color: $c_gray;
+            @include responsive((font-size: 14,
+                    line-height: 24,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(14);
+                line-height: mycalcSP(24);
+            }
+        }
+    }
+
+    &_ttl {
+        position: relative;
+        @include responsive((padding-bottom: 24,
+                margin-bottom: 24,
+            ));
+
+        @include mq(sp) {
+            padding-bottom: mycalcSP(24);
+            margin-bottom: mycalcSP(24);
+        }
+
+        p {
+            text-align: center;
+            @include responsive((font-size: 18,
+                    line-height: 40,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(16);
+                line-height: mycalcSP(36);
+            }
+        }
+    }
+
+    #toc_container {
+        @include responsive((margin-bottom: 80,
+            ));
+
+        @include mq(sp) {
+            margin-bottom: mycalcSP(64);
+        }
+
+        + {
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p,
+            ul,
+            ol,
+            table,
+            blockquote,
+            q {
+                @include responsive((margin-top: 0,
+                    ));
+
+                @include mq(sp) {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    .contents_post {
+
+        width: 100%;
+        box-sizing: border-box;
+
+        .insert {
+            &_list {
+                width: 100%;
+                box-sizing: border-box;
+                border: 1px solid $c_border;
+                @include responsive((margin-bottom: 48,
+                    ));
+
+                @include mq(sp) {
+                    margin-bottom: mycalcSP(32);
+                }
+
+                &_info {
+                    width: auto;
+
+                    @include mq(sp) {
+                        box-sizing: border-box;
+                        width: 100%;
+                    }
+                }
+
+                &_thumb {
+                    order: -1;
+                    overflow: hidden;
+                    box-sizing: border-box;
+                    flex-shrink: 0;
+                    background: $c_brown;
+                    @include flex(row, center, center, none, wrap);
+                    @include responsive((width: 184,
+                            height: 184,
+                            margin-right: 24,
+                        ));
+
+                    @include mq(sp) {
+                        width: mycalcSP(271);
+                        height: mycalcSP(271);
+                        margin-right: 0;
+                        margin-bottom: mycalcSP(16);
+                    }
+
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        transition: transform $t_hv;
+                    }
+                }
+
+                &_link {
+                    transition: background-color $t_slide;
+                    box-sizing: border-box;
+                    position: relative;
+                    @include responsive((padding: 24,
+                        ));
+                    @include flex(row, flex-start, center, none, nowrap);
+
+                    @include mq(sp) {
+                        flex-wrap: wrap;
+                        align-items: flex-start;
+                        padding: mycalcSP(16);
+                    }
+
+                    &:hover {
+                        background: $c_white;
+
+                        .insert_list_excerpt {}
+
+                        .insert_list_thumb img {
+                            transform: scale(1.08);
+                        }
+                    }
+                }
+
+                &_ttl {
+                    width: 100%;
+                    font-family: $f_mincho;
+                    font-weight: 500;
+                    @include responsive((font-size: 16,
+                            line-height: 24,
+                            margin-bottom: 16,
+                        ));
+
+                    @include mq(sp) {
+                        font-size: mycalcSP(15);
+                        line-height: mycalcSP(24);
+                        margin-bottom: mycalcSP(8);
+                    }
+                }
+
+                &_excerpt {
+                    width: 100%;
+                    transition: $t_hv;
+
+                    @include responsive((font-size: 14,
+                            line-height: 24,
+                        ));
+
+                    @include mq(sp) {
+                        font-size: mycalcSP(13);
+                        line-height: mycalcSP(20);
+
+                        br {
+                            display: none;
+                        }
+                    }
+                }
+
+            }
+
+            &_product_list {
+                .insert_list_thumb {
+                    @include responsive((width: 136,
+                            height: 136,
+                        ));
+
+                    @include mq(sp) {
+                        width: mycalcSP(80);
+                        height: mycalcSP(80);
+                    }
+                }
+
+                .insert_list_ttl {
+                    @include mq(sp) {
+                        width: calc(100% - #{mycalcSP(128)});
+                        height: mycalcSP(80);
+                        position: absolute;
+                        top: mycalcSP(16);
+                        right: mycalcSP(16);
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                    }
+                }
+            }
+
+            &_card {
+                width: 100%;
+                @include flex(row, space-between, stretch, none, wrap);
+                @include responsive((margin-bottom: 40,
+                    ));
+
+                @include mq(sp) {
+                    margin-bottom: mycalcSP(32);
+                }
+
+                &_item {
+                    box-sizing: border-box;
+                    border: 1px solid $c_border;
+                    @include responsive((width: 356,
+                        ));
+
+                    @include mq(sp) {
+                        width: mycalcSP(160);
+                    }
+
+                    &_link {
+                        transition: $t_hv;
+                        height: 100%;
+                        box-sizing: border-box;
+                        @include flex(row, flex-start, flex-start, none, wrap);
+                        @include responsive((padding: 16,
+                            ));
+
+                        @include mq(sp) {
+                            padding: mycalcSP(12);
+                        }
+
+                        &:hover {
+                            background: $c_white;
+
+                            .insert_card_excerpt {
+                                background: $c_white;
+
+                                &:before {
+                                    background-position: 100% 0;
+                                    background-size: 200% 100%;
+                                }
+                            }
+
+                            .insert_card_thumb img {
+                                transform: scale(1.08);
+                            }
+                        }
+                    }
+                }
+
+                &_thumb {
+                    order: -1;
+                    overflow: hidden;
+                    box-sizing: border-box;
+                    @include flex(row, center, center, none, nowrap);
+                    @include responsive((width: 324,
+                            height: 182,
+                            margin-bottom: 12,
+                        ));
+
+                    @include mq(sp) {
+                        width: mycalcSP(136);
+                        height: mycalcSP(76);
+                        margin-bottom: mycalcSP(6);
+                    }
+
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        transition: $t_hv;
+                    }
+                }
+
+                &_ttl {
+                    width: 100%;
+                    font-family: $f_mincho;
+                    font-weight: 500;
+                    @include responsive((font-size: 16,
+                            line-height: 28,
+                            margin-bottom: 8,
+                        ));
+
+                    @include mq(sp) {
+                        font-size: mycalcSP(14);
+                        line-height: mycalcSP(24);
+                        margin-bottom: mycalcSP(6);
+                    }
+                }
+
+                &_excerpt {
+                    width: 100%;
+                    @include responsive((font-size: 14,
+                            //line-height: 24,
+                        ));
+                    @include overflowText(3, 1.714285714);
+
+                    &:before {
+                        background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 15%, rgba(255, 255, 255, 1) 50%, rgba(243, 246, 252, 0) 51%, rgba(243, 246, 252, 1) 80%, rgba(243, 246, 252, 1) 100%);
+                        background-position: 200% 0;
+                        background-size: 200% 100%;
+                    }
+
+                    @include mq(sp) {
+                        font-size: mycalcSP(10);
+                        line-height: mycalcSP(14);
+                        @include overflowText(2, 1.4);
+
+                        br {
+                            display: none;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .purchase {
+            width: 100%;
+            background: $c_white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            box-sizing: border-box;
+            @include responsive((padding: 32,
+                    margin-bottom: 48,
+                ));
+
+            @include mq(sp) {
+                width: 100vw;
+                transform: translateX(#{mycalcSP(-36)});
+                padding: mycalcSP(32 36);
+                margin-bottom: mycalcSP(32);
+            }
+
+            &_ttl {
+                font-family: $f_mincho;
+                font-weight: 300;
+                @include responsive((font-size: 20,
+                        line-height: 28,
+                        margin-bottom: 16,
+                    ));
+
+                @include mq(sp) {
+                    font-size: mycalcSP(16);
+                    line-height: mycalcSP(24);
+                    margin-bottom: mycalcSP(16);
+                }
+            }
+
+            .btn_round_link {
+                background: $c_border;
+                color: $c_white;
+                @include textGradient($c_white, $c_brown, '.btn_round_link_txt', $p_slide, .1s);
+
+                .ico_arw path {
+                    stroke: $c_white;
+                    transition: stroke $t_slide;
+                }
+
+                .ico_ec path {
+                    stroke: $c_white;
+                    transition: stroke $t_slide;
+                }
+
+                &:hover {
+                    .ico_arw path {
+                        stroke: $c_brown;
+                    }
+
+                    .ico_ec path {
+                        stroke: $c_brown;
+                    }
+                }
+            }
+        }
+
+        .article_index,
+        .no_bullets {
+            width: 100%;
+            border: 1px solid $c_border;
+            box-sizing: border-box;
+            @include responsive((padding: 32,
+                ));
+
+            @include mq(sp) {
+                padding: mycalcSP(16);
+            }
+
+            .toc_title {
+                letter-spacing: .05em;
+                font-family: $f_mincho;
+                @include responsive((font-size: 24,
+                        line-height: 24,
+                        margin-bottom: 24,
+                    ));
+
+                @include mq(sp) {
+                    font-size: mycalcSP(18);
+                    line-height: mycalcSP(24);
+                    margin-bottom: mycalcSP(16);
+                }
+            }
+
+            .toc_list {
+
+                li {
+                    &:before {
+                        content: none;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: $c_text;
+                        @include responsive((font-size: 16,
+                                line-height: 28,
+                            ));
+
+                        @include mq(sp) {
+                            font-size: mycalcSP(15);
+                            line-height: mycalcSP(24);
+                        }
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                >li {
+                    padding-left: 0;
+                    border-bottom: 1px solid $c_white;
+                    @include responsive((padding-bottom: 20,
+                            margin-bottom: 20,
+                        ));
+
+                    @include mq(sp) {
+                        padding-bottom: mycalcSP(16);
+                        margin-bottom: mycalcSP(16);
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                        padding-bottom: 0;
+                        border-bottom: 0;
+                    }
+
+                    >ul {
+                        @include responsive((margin-top: 12,
+                                margin-bottom: 20,
+                            ));
+
+                        @include mq(sp) {
+                            margin-top: mycalcSP(12);
+                            margin-bottom: mycalcSP(16);
+                        }
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+
+                        >li {
+                            @include responsive((margin-bottom: 8,
+                                    padding-left: 16,
+                                ));
+
+                            @include mq(sp) {
+                                margin-bottom: mycalcSP(8);
+                                padding-left: mycalcSP(16);
+                            }
+
+                            &:last-child {
+                                margin-bottom: 0;
+                            }
+
+                            a {
+                                @include responsive((font-size: 14,
+                                        line-height: 24,
+                                    ));
+
+                                @include mq(sp) {
+                                    font-size: mycalcSP(24);
+                                    line-height: mycalcSP(24);
+                                }
+
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.post_tags {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    @include responsive((margin-top: 48,
+            margin-bottom: 56,
+        ));
+
+    @include mq(sp) {
+        box-sizing: border-box;
+        padding: mycalcSP(0 36);
+        margin-top: mycalcSP(32);
+        margin-bottom: mycalcSP(24);
+    }
+
+    .post_tag {
+        border: 1px solid $c_border;
+        @include responsive((border-radius: 16,
+                margin-right: 8,
+                margin-bottom: 8,
+            ));
+
+        @include mq(sp) {
+            border-radius: mycalcSP(16);
+            margin-right: mycalcSP(8);
+            margin-bottom: mycalcSP(8);
+        }
+
+        a {
+            letter-spacing: 0;
+            display: flex;
+            @include responsive((padding: 8 16,
+                    font-size: 12,
+                    line-height: 16));
+
+            @include mq(sp) {
+                padding: mycalcSP(4 8);
+                font-size: mycalcSP(12);
+                line-height: mycalcSP(16);
+            }
+        }
+    }
+}
+
+.post_sns {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    @include mq(sp) {
+        box-sizing: border-box;
+        padding: mycalcSP(0 36);
+        flex-flow: column;
+        align-items: flex-start;
+    }
+
+    &_share {
+        font-family: $f_en;
+        letter-spacing: .05em;
+        font-weight: 400;
+        border-right: 1px solid $c_border;
+        flex-shrink: 0;
+        @include responsive((padding: 16 32 16 0,
+                font-size: 20,
+                line-height: 24,
+                margin-right: 32,
+            ));
+
+        @include mq(sp) {
+            width: 100%;
+            padding: 0;
+            font-size: mycalcSP(18);
+            line-height: mycalcSP(24);
+            margin-right: 0;
+            margin-bottom: mycalcSP(8);
+            border-right: 0;
+        }
+    }
+
+    &_list {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+
+        &_item {
+            @include responsive((margin-right: 32,
+                ));
+
+            @include mq(sp) {
+                margin-right: mycalcSP(24);
+            }
+
+            &_link {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                @include responsive((padding: 12 8,
+                    ));
+
+                @include mq(sp) {
+                    padding: mycalcSP(10 0);
+                }
+
+
+                img {
+                    @include responsive((width: 20,
+                            height: 20,
+                        ));
+
+                    @include mq(sp) {
+                        width: mycalcSP(20);
+                        height: mycalcSP(20);
+                    }
+                }
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    background: $c_border;
+                    transition: width $p_over cubic-bezier(.23, 1, .32, 1);
+                }
+
+                &:hover {
+                    &:before {
+                        width: 0;
+                        left: auto;
+                        right: 0;
+                    }
+                }
+            }
+
+            &_txt {
+                font-family: $f_en;
+                font-weight: 300;
+                letter-spacing: .05em;
+                @include responsive((font-size: 18,
+                        line-height: 32,
+                        margin-left: 4,
+                    ));
+
+                @include mq(sp) {
+                    font-size: mycalcSP(16);
+                    line-height: mycalcSP(24);
+                    margin-left: mycalcSP(4);
+                }
+            }
+        }
+    }
+}
+
+.inner_contents {
+    margin: 0 auto;
+    @include responsive((width: 904,
+        ));
+
+    @include mq(sp) {
+        width: mycalcSP(342);
+    }
+
+    p,
+    li {
+        letter-spacing: 0;
+        @include responsive((font-size: 16,
+                line-height: 40,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(15);
+            line-height: mycalcSP(38);
+        }
+    }
+
+    p,
+    ul,
+    ol {
+        &:not(:last-child) {
+            @include responsive((margin-bottom: 40,
+                ));
+
+            @include mq(sp) {
+                margin-bottom: mycalcSP(38);
+            }
+        }
+    }
+
+    li {
+        position: relative;
+        @include responsive((padding-left: 16,
+            ));
+
+        @include mq(sp) {
+            padding-left: mycalcSP(16);
+        }
+
+        &:before {
+            content: "";
+            background: $c_brown;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            @include responsive((width: 8,
+                    height: 8,
+                    top: 8,
+                ));
+
+            @include mq(sp) {
+                width: mycalcSP(8);
+                height: mycalcSP(8);
+                top: mycalcSP(8);
+            }
+        }
+
+        &:not(:last-child) {
+            @include responsive((margin-bottom: 8,
+                ));
+
+            @include mq(sp) {
+                margin-bottom: mycalcSP(8);
+            }
+        }
+    }
+
+    .btn {
+        @include responsive((margin-top: 80,
+            ));
+
+        @include mq(sp) {
+            margin-top: mycalcSP(80);
+        }
+    }
+}
+
+.post_meta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    border-bottom: 1px solid $c_gray;
+    @include responsive((margin-bottom: 80,
+            padding-bottom: 32,
+        ));
+
+    @include mq(sp) {
+        margin-bottom: mycalcSP(64);
+        padding-bottom: mycalcSP(32);
+        box-sizing: border-box;
+    }
+
+    &_date {
+        font-family: $f_en;
+        letter-spacing: .1em;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        @include responsive((margin-right: 48,
+                font-size: 16,
+                line-height: 24,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(16);
+            line-height: mycalcSP(24);
+            margin-right: mycalcSP(48);
+        }
+    }
+
+    &_cat {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        .cat {
+            letter-spacing: 0;
+            position: relative;
+            @include responsive((margin-right: 24,
+                    font-size: 14,
+                    line-height: 24,
+                    padding-left: 14,
+                ));
+
+            @include mq(sp) {
+                margin-right: mycalcSP(16);
+                font-size: mycalcSP(14);
+                line-height: mycalcSP(24);
+                padding-left: mycalcSP(14);
+            }
+
+            &:before {
+                content: "";
+                border-radius: 50%;
+                background: $c_brown;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                @include responsive((width: 6,
+                        height: 6,
+                        margin-top: -3,
+                    ));
+
+                @include mq(sp) {
+                    width: mycalcSP(6);
+                    height: mycalcSP(6);
+                    margin-top: mycalcSP(-3);
+                }
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.post_figure {
+    width: 100%;
+    @include responsive((margin-bottom: 80));
+
+    @include mq(sp) {
+        margin-bottom: mycalcSP(48);
+    }
+
+    &_img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+}
+
+.related {
+
+    .ttl_underline {
+        margin-top: 0;
+        box-sizing: border-box;
+
+        @include mq(sp) {
+            width: mycalcSP(303);
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    .swiper {
+        @include mq(sp) {
+            width: 100%;
+            padding-left: mycalcSP(36);
+        }
+    }
+
+    .box_card,
+    .box_card_link,
+    .box_card_thumb {
+        @include responsive((width: 240,
+            ));
+
+        @include mq(sp) {
+            width: mycalcSP(144);
+        }
+    }
+
+    .box_card_thumb {
+        @include responsive((margin-bottom: 16,
+            ));
+
+        @include mq(sp) {
+            margin-bottom: mycalcSP(8);
+        }
+    }
+
+    .box_card_desc_ttl {
+        @include responsive((font-size: 14,
+                line-height: 20,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(14);
+            line-height: mycalcSP(20);
+        }
+    }
+
+    .time,
+    .tag {
+        @include responsive((font-size: 14,
+                line-height: 20,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(14);
+            line-height: mycalcSP(20);
+        }
+    }
+
+    .price {
+        font-family: $f_en;
+        letter-spacing: .05em;
+        @include responsive((font-size: 16,
+                line-height: 20,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(16);
+            line-height: mycalcSP(20);
+        }
+
+        small {
+            @include responsive((font-size: 12,
+                    line-height: 20,
+                    margin-left: 6,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(12);
+                line-height: mycalcSP(20);
+                margin-left: mycalcSP(6);
+            }
+        }
+    }
+
+    &_product {
+        @include responsive((margin-bottom: 80));
+
+        @include mq(sp) {
+            margin-bottom: mycalcSP(48);
+        }
+
+        .box_card_thumb {
+            @include responsive((height: 240,
+                ));
+
+            @include mq(sp) {
+                height: mycalcSP(144);
+            }
+        }
+
+        .box_card_desc {
+            height: auto;
+            @include responsive((margin-bottom: 8,
+                ));
+
+            @include mq(sp) {
+                margin-bottom: mycalcSP(4);
+            }
+        }
+    }
+
+    &_article {
+
+        .box_card,
+        .box_card_link {
+            @include mq(sp) {
+                width: mycalcSP(240);
+            }
+        }
+
+        .box_card_thumb {
+            @include responsive((height: 240,
+                ));
+
+            @include mq(sp) {
+                width: mycalcSP(240);
+                height: mycalcSP(240);
+            }
+        }
+
+        .box_card_desc {
+            @include responsive((height: 40,
+                    margin-bottom: 16,
+                ));
+
+            @include mq(sp) {
+                height: mycalcSP(40);
+                margin-bottom: mycalcSP(8);
+            }
+        }
+    }
+
+    .swiper-scrollbar {
+        position: relative;
+        width: 100%;
+        @include responsive((height: 5,
+            ));
+
+        @include mq(sp) {
+            width: 100%;
+            height: mycalcSP(5);
+            margin-left: 0;
+            margin-top: mycalcSP(-1);
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            background: $c_white;
+            @include responsive((height: 1,
+                    top: 2.5,
+                ));
+
+            @include mq(sp) {
+                height: mycalcSP(1);
+                top: mycalc(2.5);
+            }
+        }
+
+        &-drag {
+            cursor: pointer;
+            position: relative;
+            @include responsive((height: 5,
+                ));
+
+            @include mq(sp) {
+                height: mycalcSP(5);
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 100%;
+                background: $c_brand;
+                @include responsive((height: 1,
+                        top: 2.5,
+                    ));
+
+                @include mq(sp) {
+                    height: mycalcSP(1);
+                    top: mycalc(2.5);
+                }
+            }
+        }
+    }
+}
+
+// WordPressのエディターにも適応する場合、以下を適応。
+body.wp-editor {
+    box-sizing: border-box;
+    padding: 20px !important;
+    @extend .contents;
+}

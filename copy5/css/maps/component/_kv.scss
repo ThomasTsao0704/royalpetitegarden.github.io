@@ -1,0 +1,100 @@
+/*
+ * kv.scss
+ *
+ * キービジュアル用コンポーネント
+ * 主にトップページで利用。
+ */
+@use "sass:math";
+
+.kv {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+    color: $c_white;
+    z-index: 0;
+
+    @include responsive((min-height: 880,
+        ));
+
+    @include mq(sp) {
+        height: mycalcSP(880);
+        min-height: auto;
+    }
+
+    &_figure {
+        position: absolute;
+        overflow: hidden;
+        top: 50%;
+        left: 50%;
+        //height: calc(100vh + 230px);
+        //min-height: calc(880px + 346px);
+        border-radius: 0 0 2400px 2400px / 0 0 1240px 1240px;
+
+        @include responsive((width: 2400,
+                height: 1768,
+                margin-left: -1200,
+                margin-top: -884,
+            ));
+
+        @include mq(pc) {
+            //height: calc(100vh + #{mycalc(346)});
+            //min-height: calc(880px + #{mycalc(346)});
+            border-radius: mycalc(0 0 2400 2400) / mycalc(0 0 1240 1240);
+        }
+
+        @include mq(sp) {
+            width: 100%;
+            height: calc(100vh + #{mycalcSP(116)});
+            min-height: calc(#{mycalcSP(880)} + #{mycalcSP(80)});
+            border-radius: mycalcSP(0 0 1040 1040) / mycalcSP(0 0 800 800);
+            top: 0;
+            left: 0;
+            margin-left: 0;
+            margin-top: 0;
+        }
+
+        &_img {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            max-width: none;
+            /*
+       max-width: none;
+       mask-image: url(../images/top/kv_bg_arch.svg);
+       mask-position: 50% 0%;
+       mask-size: 100% 100%;
+       mask-repeat: no-repeat;
+       */
+
+            @include responsive((width: 2660,
+                    height: 1774,
+                    margin-top: -887,
+                    margin-right: -1330,
+                ));
+
+            @media screen and (min-width: 2660px) {
+                width: auto;
+                height: 100%;
+            }
+
+            @media (max-aspect-ratio: 2660/1774) {
+                width: auto;
+                height: 100%;
+            }
+
+            @include mq(sp) {
+                width: mycalcSP(390);
+                height: mycalcSP(960);
+                margin-top: 0;
+                margin-right: 0;
+                top: 0;
+                right: 0;
+                //mask-image: url(../images/top/kv_bg_arch_sp.svg);
+                //mask-size: auto 100%;
+            }
+        }
+
+    }
+}

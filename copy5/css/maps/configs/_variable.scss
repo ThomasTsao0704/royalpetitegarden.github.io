@@ -1,0 +1,114 @@
+/* =============================
+ * Size
+ */
+
+$s_widthCompPC: 1920; // PC DesignCompData WidthSizePX
+$s_widthCompSP: 390; // SP DesignCompData WidthSizePX
+$s_widthDesignMag: 1; // デザインデータの倍率（2倍の場合は、「2」）
+$s_widthBase: 1280; // デザインデータのPC基準値（最小固定値）
+$s_widthWide: 1600; // 推奨最小閲覧サイズ（PCのサイドメニューなども考慮すること）
+
+
+/* =============================
+  * Color
+  */
+
+$c_black: #000000;
+$c_white: #ffffff;
+
+$c_brown: #908881;
+
+$c_gray: #B6B2AF;
+$c_gray_dark: #6F6B6C;
+$c_stone: #D3D3D1;
+$c_beige: #DFDAD6;
+$c_beige_light: #FBF7F3;
+
+// $c_inc_black: #403F3E;
+$c_inc_black: #303030;
+
+
+
+/*
+ $c_gradient_emerald: linear-gradient(to right, #39fad7 0%, #39fad7 50%, #44ea76 60%, #44ea76 100%);
+ $c_gradient_emerald_smooth: linear-gradient(to right, #39fad7 0%, #44ea76 100%);
+ $c_gradient_blue: linear-gradient(to right, #0061FC 0%, #0069FF 80%, #0069FF 100%);
+ */
+
+// role
+$c_brand: $c_brown;
+$c_bg: $c_beige;
+$c_bg_filter: $c_beige;
+$c_border: $c_gray_dark;
+$c_btn: $c_brown;
+$c_text: $c_inc_black;
+
+
+/* =============================
+  * Font
+  */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Poiret+One&family=Shippori+Mincho+B1:wght@400;700&display=swap');
+
+$f_gothic: "游ゴシック体",
+"Yu Gothic",
+"游ゴシック",
+YuGothic,
+Verdana,
+"メイリオ",
+Meiryo,
+"M+ 1p",
+sans-serif;
+$f_mincho: 'Shippori Mincho B1',
+"Yu Mincho",
+"游明朝",
+YuMincho,
+"ヒラギノ明朝 ProN",
+serif,
+"Sawarabi Mincho"; // Android 明朝体非対応対策
+$f_en: 'Cinzel',
+'Shippori Mincho B1',
+serif,
+$f_mincho;
+$f_special: 'Poiret One',
+cursive,
+$f_gothic;
+$f_ie10: Verdana,
+Meiryo,
+sans-serif;
+//$f_en_sans: 'Montserrat', $f_gothic;
+
+
+/* =============================
+  * Speed
+  */
+
+$p_hum : .8s;
+$p_hv : .6s;
+$p_slide : .3s;
+$p_scroll : .4s;
+$p_over : .4s;
+
+
+/* =============================
+  * Easing
+  */
+$e_curtain : cubic-bezier(.25, .46, .45, .94);
+$e_curtain_rev : cubic-bezier(.94, .45, .46, .25);
+$e_syu : cubic-bezier(.645, .045, .355, 1);
+$e_humberger : cubic-bezier(.55, 0, .1, 1);
+$e_slot : cubic-bezier(.32, .95, .6, 1);
+$e_scroll : cubic-bezier(.32, .95, .6, 1);
+$e_fade : cubic-bezier(.32, .95, .6, 1);
+$e_draw : cubic-bezier(1, .6, .32, .78);
+//$e_slot_child  : cubic-bezier(1, 1, .6, .6);
+
+$t_curtain: 1s $e_curtain;
+$t_btn : $p_hv $e_curtain;
+$t_hv : $p_hv $e_slot;
+$t_slide : $p_hv $e_slot;
+$t_scroll : $p_scroll $e_scroll;
+$t_fade : $p_hv+.6s $e_slot;
+$t_slide_child : $p_slide $e_slot;
+$t_transition : .5s cubic-bezier(.32, .95, .6, 1);
+$t_slideUp : .9s cubic-bezier(.32, .95, .6, 1.3);
+$t_bubble : .4s cubic-bezier(.3, .41, .73, 1.03);

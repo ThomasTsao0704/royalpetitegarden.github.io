@@ -1,0 +1,189 @@
+/*
+ * box.scss
+ *
+ * 箱型デザイン用コンポーネント
+ * 定義する際は、接頭辞としてbox_を付けること。
+ */
+
+@mixin box_card() {
+    display: block;
+    box-sizing: border-box;
+    @include responsive((width: 336,
+            margin: 0 24 40 0,
+        ));
+
+    @include mq(sp) {
+        width: mycalcSP(264);
+        margin: mycalcSP(0 24 32 0);
+    }
+
+    &_meta {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        .time {
+            font-family: $f_en;
+            @include responsive((font-size: 16,
+                    line-height: 24,
+                    margin-right: 24,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(14);
+                line-height: mycalcSP(16);
+                margin-right: mycalcSP(16);
+            }
+        }
+
+        .tag {
+            @include responsive((font-size: 16,
+                    line-height: 24,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(14);
+                line-height: mycalcSP(16);
+            }
+        }
+    }
+
+    &_data {
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        box-sizing: border-box;
+    }
+
+    &_desc {
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        position: relative;
+        order: -1;
+        @include responsive((margin-bottom: 24,
+                height: 48,
+            ));
+
+        @include mq(sp) {
+            margin-bottom: mycalcSP(16);
+            height: auto;
+        }
+
+        &_ttl {
+            font-weight: 400;
+
+            @include responsive((font-size: 16,
+                    line-height: 24,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(15);
+                line-height: mycalcSP(24);
+            }
+        }
+    }
+
+    &_thumb {
+        order: -1;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include responsive((width: 336,
+                height: 336,
+                margin-bottom: 24,
+            ));
+
+        @include mq(sp) {
+            width: mycalcSP(264);
+            height: auto;
+            margin-bottom: mycalcSP(16);
+        }
+
+        &_img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform $t_hv;
+        }
+    }
+
+    .btn {
+        @include responsive((height: 40,
+                margin: 20 0 0,
+            ));
+
+        @include mq(sp) {
+            width: 100%;
+            height: mycalcSP(40);
+            margin: mycalcSP(20 0 0);
+        }
+
+        &_link {
+            justify-content: center;
+            @include responsive((padding: 0 16,
+                ));
+
+            @include mq(sp) {
+                padding: mycalcSP(0 16);
+            }
+
+            &_txt {
+                @include responsive((font-size: 13,
+                        line-height: 22,
+                    ));
+
+                @include mq(sp) {
+                    font-size: mycalcSP(13);
+                    line-height: mycalcSP(22);
+                }
+
+                &:before,
+                &:after {
+                    @include responsive((right: 12,
+                        ));
+
+                    @include mq(sp) {
+                        right: mycalcSP(12);
+                    }
+                }
+            }
+        }
+    }
+
+    &_link {
+        height: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        transition: filter $t_hv;
+        @include responsive((width: 336,
+            ));
+
+        @include mq(sp) {
+            width: 100%;
+        }
+
+        &:hover {
+            .box_card_thumb_img {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+}
+
+
+// 利用例
+.box_card {
+    @include box_card;
+}

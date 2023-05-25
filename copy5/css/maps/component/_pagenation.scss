@@ -1,0 +1,185 @@
+/*
+ * pagenation.scss
+ *
+ * ページャー／ページネーション用コンポーネント
+ */
+
+
+// 詳細ページのページャー想定
+.pager {
+    box-sizing: border-box;
+    margin: 0;
+    @include responsive((width: 787,
+        ));
+
+    @include mq(sp) {
+        width: 100%;
+    }
+
+    &_list {
+        width: 100%;
+        position: relative;
+        box-sizing: border-box;
+        @include responsive($list: (margin: 0 auto,
+                padding: 0,
+            ));
+        @include flex(row, flex-end, center, none, wrap);
+
+        @include mq(sp) {
+            justify-content: center;
+            margin: mycalcSP(44 auto 0);
+            padding: 0;
+        }
+
+        &_num {
+            @include responsive($list: (width: 38,
+                    height: 47,
+                    margin: 0 5,
+                ));
+
+            @include mq(sp) {
+                width: mycalcSP(38);
+                height: mycalcSP(47);
+                margin: mycalcSP(12 8 0);
+            }
+
+            span,
+            a {
+                @include flex(row, center, center, none, wrap);
+                box-sizing: border-box;
+                color: $c_text;
+                transition: color $p_over cubic-bezier(.23, 1, .32, 1);
+                font-family: $f_en;
+                letter-spacing: 0;
+                position: relative;
+                overflow: hidden;
+                z-index: 0;
+                @include responsive((width: 38,
+                        height: 47,
+                        font-size: 15,
+                        line-height: 15,
+                    ));
+
+                @include mq(sp) {
+                    width: mycalcSP(38);
+                    height: mycalcSP(47);
+                    font-size: mycalcSP(15);
+                    line-height: mycalcSP(15);
+                }
+
+                &:before {
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    background: $c_white;
+                    position: absolute;
+                    bottom: 50%;
+                    left: 50%;
+                    transition: width $p_over cubic-bezier(.23, 1, .32, 1), height $p_over cubic-bezier(.23, 1, .32, 1), bottom $p_over cubic-bezier(.23, 1, .32, 1), left $p_over cubic-bezier(.23, 1, .32, 1), background $p_over cubic-bezier(.23, 1, .32, 1);
+                    z-index: -1;
+                    @include responsive((border-radius: 40,
+                        ));
+
+                    @include mq(sp) {
+                        border-radius: mycalcSP(40);
+                    }
+                }
+            }
+
+            a {
+                &:hover {
+                    color: $c_white;
+
+                    &:before {
+                        width: 100%;
+                        height: 100%;
+                        left: 0;
+                        bottom: 0;
+                        background: $c_brown;
+                    }
+                }
+            }
+
+            .current {
+
+                &:before {
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    bottom: 0;
+                    border: 1px solid $c_brown;
+                    background: none;
+                    @include responsive((border-radius: 40,
+                        ));
+
+                    @include mq(sp) {
+                        border-radius: mycalcSP(40);
+                    }
+                }
+            }
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+        }
+    }
+}
+
+
+// 一覧ページのページャー想定
+.pagenation {
+    width: 100%;
+    margin: 0 auto;
+    @include flex(row, space-between, center, none, wrap);
+    @include responsive($list: (max-width : 1200,
+            padding: 48 0,
+            margin-top: 96,
+            margin-bottom: 120,
+        ));
+
+    @include mq(sp) {
+        width: 100%;
+        position: relative;
+        padding: mycalcSP(32 0 0);
+        margin-top: mycalcSP(64);
+        margin-bottom: 0;
+    }
+
+    @include mq(sp) {
+
+        .prev,
+        .next {
+            position: absolute;
+            top: mycalcSP(32);
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .list {
+            margin: 0 auto;
+            top: mycalcSP(72);
+        }
+    }
+
+}
+
+
+.pager,
+.pagenation {
+
+    .btn {
+        margin-top: 0;
+    }
+}

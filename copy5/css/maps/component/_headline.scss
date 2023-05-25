@@ -1,0 +1,376 @@
+/*
+ * headline.scss
+ *
+ * 見出し用コンポーネント
+ * 定義する際は、接頭辞としてttl_を付けること。
+ */
+
+.ttl_underline {
+    width: 100%;
+    position: relative;
+    letter-spacing: 0;
+    border-bottom: 1px solid $c_gray;
+    @include responsive((font-size: 28,
+            line-height: 44,
+            padding-bottom: 32,
+            margin-top: 80,
+            margin-bottom: 80,
+        ));
+
+    @include mq(sp) {
+        font-size: mycalcSP(24);
+        line-height: mycalcSP(36);
+        padding-bottom: mycalcSP(32);
+        margin-top: mycalcSP(64);
+        margin-bottom: mycalcSP(48);
+    }
+}
+
+.ttl_frame {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    letter-spacing: 0;
+    @include responsive((font-size: 26,
+            line-height: 40,
+            margin-top: 80,
+            margin-bottom: 48,
+        ));
+
+    @include mq(sp) {
+        font-size: mycalcSP(20);
+        line-height: mycalcSP(28);
+        margin-top: mycalcSP(64);
+        margin-bottom: mycalcSP(32);
+    }
+}
+
+.ttl_beta {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    letter-spacing: 0;
+    @include responsive((font-size: 24,
+            line-height: 36,
+            margin-top: 64,
+            margin-bottom: 32,
+        ));
+
+    @include mq(sp) {
+        font-size: mycalcSP(18);
+        line-height: mycalcSP(26);
+        margin-top: mycalcSP(64);
+        margin-bottom: mycalcSP(32);
+    }
+}
+
+.ttl_bar {
+    position: relative;
+    letter-spacing: 0;
+    @include responsive((font-size: 20,
+            line-height: 32,
+            margin-top: 64,
+            margin-bottom: 32,
+        ));
+
+    @include mq(sp) {
+        font-size: mycalcSP(16);
+        line-height: mycalcSP(24);
+        margin-top: mycalcSP(64);
+        margin-bottom: mycalcSP(32);
+    }
+}
+
+.ttl_bold {
+    width: 100%;
+    position: relative;
+    letter-spacing: 0;
+    @include responsive((font-size: 18,
+            line-height: 28,
+            margin-top: 64,
+            margin-bottom: 32,
+        ));
+
+    @include mq(sp) {
+        font-size: mycalcSP(15);
+        line-height: mycalcSP(22);
+        margin-top: mycalcSP(64);
+        margin-bottom: mycalcSP(32);
+    }
+
+}
+
+.ttl_sec {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+    margin: 0 auto;
+    @include responsive((max-width: 1200,
+            margin-bottom: 64,
+        ));
+
+    @include mq(sp) {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto mycalcSP(24);
+    }
+
+    &_ja {
+        letter-spacing: 0;
+        font-weight: 500;
+        font-family: $f_gothic;
+        color: $c_brown;
+        @include responsive((font-size: 18,
+                line-height: 32,
+                margin-bottom: 28,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(14);
+            line-height: mycalcSP(24);
+            margin-bottom: mycalcSP(16);
+        }
+    }
+
+    &_en {
+        letter-spacing: 0;
+        font-weight: 500;
+        font-family: $f_en;
+        color: $c_brown;
+        @include responsive((font-size: 18,
+                line-height: 18,
+                margin-bottom: 24,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(14);
+            line-height: mycalcSP(14);
+            margin-bottom: mycalcSP(16);
+        }
+    }
+
+    &_headline {
+        letter-spacing: 0;
+        font-weight: 400;
+        font-family: $f_mincho;
+        @include responsive((font-size: 48,
+                line-height: 72,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(28);
+            line-height: mycalcSP(40);
+        }
+    }
+
+    &_sub {
+
+        &_ja {
+            letter-spacing: 0;
+            font-weight: 500;
+            font-family: $f_gothic;
+            color: $c_brown;
+            @include responsive((font-size: 16,
+                    line-height: 29,
+                    margin-bottom: 25,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(14);
+                line-height: mycalcSP(24);
+                margin-bottom: mycalcSP(16);
+            }
+        }
+
+        &_en {
+            letter-spacing: 0;
+            font-weight: 500;
+            font-family: $f_en;
+            color: $c_brown;
+            @include responsive((font-size: 16,
+                    line-height: 16,
+                    margin-bottom: 24,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(14);
+                line-height: mycalcSP(14);
+                margin-bottom: mycalcSP(16);
+            }
+        }
+
+        &_headline {
+            letter-spacing: 0;
+            font-weight: 400;
+            font-family: $f_mincho;
+            @include responsive((font-size: 40,
+                    line-height: 56,
+                ));
+
+            @include mq(sp) {
+                font-size: mycalcSP(24);
+                line-height: mycalcSP(32);
+            }
+        }
+    }
+
+    &_wen {
+        order: -1;
+        font-family: $f_en;
+        position: relative;
+        color: $c_gray;
+        white-space: nowrap;
+        letter-spacing: 0;
+        @include responsive((font-size: 160,
+                line-height: 160,
+                margin-bottom: 16,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(56);
+            line-height: mycalcSP(56);
+            margin-bottom: mycalcSP(16);
+            padding-left: 0;
+        }
+    }
+}
+
+.content_headline {
+    @extend .ttl_sec_headline;
+    @include responsive((margin-bottom: 64,
+        ));
+
+    @include mq(sp) {
+        margin-bottom: mycalcSP(32);
+    }
+}
+
+.ttl_ico,
+.ttl_logo,
+.ttl_reccomend {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    @include responsive((padding-left: 24,
+            margin-bottom: 24,
+        ));
+
+    @include mq(sp) {
+        padding-left: 0;
+        margin-bottom: mycalcSP(24);
+    }
+
+    &_txt {
+        font-weight: bold;
+        letter-spacing: 0;
+        font-family: $f_en;
+        @include responsive((font-size: 24,
+                line-height: 40,
+            ));
+
+        @include mq(sp) {
+            width: mycalcSP(307);
+            font-size: mycalcSP(18);
+            line-height: mycalcSP(24);
+        }
+    }
+
+    &_img {
+        order: -1;
+        @include responsive((margin-right: 8,
+            ));
+
+        @include mq(sp) {
+            margin-right: mycalcSP(8);
+        }
+
+        svg {
+            display: block;
+
+            @include mq(sp) {
+                width: mycalcSP(20);
+                height: mycalcSP(20);
+            }
+
+            path {
+                fill: $c_brown;
+
+                .studio & {
+                    fill: $c_brand;
+                }
+
+                .academy & {
+                    fill: $c_brand;
+                }
+            }
+        }
+    }
+}
+
+.ttl {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+    @include responsive((margin-bottom: 64,
+            padding: 104 0,
+        ));
+
+    @include mq(sp) {
+        margin-bottom: mycalcSP(48);
+        padding: mycalcSP(32 0);
+    }
+
+    &_ja {
+        font-weight: 400;
+        letter-spacing: .1em;
+        position: relative;
+        z-index: 1;
+        @include responsive((font-size: 24,
+                line-height: 32,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(20);
+            line-height: mycalcSP(32);
+        }
+    }
+
+    &_en {
+        order: -1;
+        font-family: $f_en;
+        font-weight: 400;
+        position: absolute;
+        letter-spacing: .1em;
+        color: $c_brown;
+        top: 0;
+        z-index: 0;
+        white-space: nowrap;
+        @include responsive((font-size: 240,
+                line-height: 240,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(96);
+            line-height: mycalcSP(96);
+            letter-spacing: 0;
+        }
+    }
+}
+
+.ttl_frame,
+.ttl_underline,
+.ttl_beta,
+.ttl_bar,
+.ttl_bold,
+.ttl_sec {
+    &:first-child {
+        margin-top: 0;
+    }
+}

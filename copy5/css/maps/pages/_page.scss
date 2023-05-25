@@ -1,0 +1,60 @@
+.main_contents {
+    width: 100%;
+    max-width: none;
+    position: relative;
+    z-index: 0;
+
+    @include responsive((padding-top: 320,
+            padding-bottom: 320,
+            margin-bottom: 360,
+        ));
+
+    @include mq(sp) {
+        padding-top: mycalcSP(160);
+        padding-bottom: mycalcSP(160);
+        margin-bottom: mycalcSP(136);
+    }
+
+    &_bg {
+        position: absolute;
+        left: 50%;
+        z-index: -5;
+        @include responsive((margin-left: -1200,
+                bottom: -360,
+            ));
+
+        @include mq(sp) {
+            margin-left: mycalcSP(-195);
+            bottom: mycalcSP(-136);
+        }
+    }
+
+
+    &_filter {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        z-index: -4;
+        background: $c_beige_light;
+        border-radius: 2350px 2350px / 1240px 1240px;
+        box-shadow: inset 64px 64px 160px rgb(0 0 0 / 10%);
+        //box-shadow: inset 64px 64px 160px rgb(0 0 0 / 25%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+
+        @include responsive((width: 2400,
+            ));
+
+        @include mq(pc) {
+            border-radius: #{mycalc(2350 2350)} / #{mycalc(1240 1240)};
+            //box-shadow: inset #{mycalc(64 64 160)} rgb(0 0 0 / 25%);
+        }
+
+        @include mq(sp) {
+            width: mycalcSP(1440);
+            border-radius: #{mycalcSP(1400 1400)} / #{mycalcSP(1380 1380)};
+            //box-shadow: inset #{mycalcSP(64 64 160)} rgb(0 0 0 / 25%);
+        }
+    }
+}

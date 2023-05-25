@@ -1,0 +1,23 @@
+.news {
+
+    &_archive {
+
+        &_inner {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            box-sizing: border-box;
+
+            @include responsive((width: 1280,
+                    padding: 0 71,
+                ));
+
+            @include mq(sp) {
+                width: 100%;
+            }
+
+        }
+    }
+
+}

@@ -1,0 +1,21 @@
+/*
+ * figure.scss
+ *
+ * 図形用コンポーネント
+ * 定義する際は、接頭辞としてfigure_を付けること。
+ */
+
+.figure {
+    &_circle {
+        border-radius: 50%;
+        overflow: hidden;
+        @include responsive((width: 560,
+                height: 560,
+            ));
+
+        @include mq(sp) {
+            width: mycalcSP(320);
+            height: mycalcSP(320);
+        }
+    }
+}

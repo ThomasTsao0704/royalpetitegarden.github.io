@@ -1,0 +1,280 @@
+/*
+ * layout.scss
+ *
+ * レイアウト用コンポーネント
+ * 定義する際は、接頭辞としてlo_を付けること。
+ */
+
+.sec,
+.lo_sec {
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    @include responsive((max-width: 1280,
+            padding: 0 40,
+            margin-bottom: 160,
+        ));
+
+    @include mq(sp) {
+        max-width: 100%;
+        padding: mycalcSP(0 24);
+        margin-bottom: mycalcSP(80);
+    }
+
+    &_desc {
+        box-sizing: border-box;
+        @include responsive((max-width: 1280,
+                font-size: 16,
+                line-height: 40,
+            ));
+
+        @include mq(sp) {
+            max-width: 100%;
+            font-size: mycalcSP(15);
+            line-height: mycalcSP(32);
+        }
+    }
+}
+
+// 画面半分程度が画像のレイアウト
+@mixin lo_half_figure($imgPosition, $imgWidth, $imgHeight, $txtWidth, $txtMargin, $padding) {
+    $imgCalcWidth: $s_widthBase*$s_widthDesignMag - $padding*$s_widthDesignMag - $txtWidth - $txtMargin;
+    $imgCalcPcWidth: $s_widthBase*$s_widthDesignMag - $padding - $txtWidth - $txtMargin;
+    $imgRatio: math.div($imgHeight, $imgWidth);
+    position: relative;
+    z-index: 0;
+
+    @include mq(sp) {
+        padding: 0;
+        background: $c_brown;
+    }
+
+    &_inner {
+        @extend .lo_sec;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        @include mq(sp) {
+            padding: 0;
+            flex-flow: column;
+        }
+    }
+
+    &_info {
+        position: relative;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        z-index: 0;
+        @include responsive((width: $txtWidth,
+                padding: 120 0,
+                margin-top: 240,
+            ));
+
+        @include mq(pc) {
+            margin-top: 0;
+        }
+
+        @include mq(sp) {
+            width: 100%;
+            padding: mycalcSP(42 20 64);
+            margin-top: 0;
+        }
+
+        &:before {
+            content: "";
+            width: 100vw;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            background: $c_brown;
+            z-index: -1;
+        }
+
+        .btn {
+            width: 100%;
+        }
+
+    }
+
+    &_desc {
+
+        @include responsive((font-size: 14,
+                line-height: 28,
+            ));
+
+        @include mq(sp) {
+            font-size: mycalcSP(14);
+            line-height: mycalcSP(28);
+        }
+
+        &:before {
+            content: "";
+            width: 100%;
+        }
+    }
+
+    &_figure {
+        position: relative;
+        z-index: 1;
+        @include responsive((width: $imgCalcWidth,
+                height: $imgHeight,
+            ));
+
+        @include mq(pc) {
+            height: mycalc($imgCalcPcWidth*$imgRatio);
+        }
+
+        @include mq(sp) {
+            width: 100%;
+            height: auto;
+            order: -1;
+        }
+
+        &_img {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: mycalcFull($imgWidth); //画像のサイズ
+            max-width: #{math.div($imgWidth, $s_widthDesignMag)* 1px}; //画像の1/2サイズ
+
+            @include mq(pc) {
+                width: mycalc($imgCalcPcWidth);
+            }
+
+            @include mq(sp) {
+                position: relative;
+                width: 100%;
+                max-width: none;
+            }
+        }
+    }
+
+    @if ($imgPosition==right) {
+        &_info {
+            @include responsive((margin-right: 126,
+                ));
+
+            @include mq(sp) {
+                margin-right: 0;
+            }
+
+            &:before {
+                left: calc((100vw - 1200px) * -0.5);
+
+                @include mq(pc) {
+                    left: calc((100vw - #{mycalc(1200)}) * -0.5);
+                }
+
+                @include mq(sp) {
+                    left: calc((100vw - #{mycalcSP(325)}) * -0.5);
+                }
+            }
+        }
+    }
+
+    @else {
+        &_info {
+            @include responsive((margin-left: 252,
+                ));
+
+            @include mq(sp) {
+                margin-left: 0;
+            }
+
+            &:before {
+                right: calc((100vw - 1200px) * -0.5);
+
+                @include mq(pc) {
+                    right: calc((100vw - #{mycalc(1200)}) * -0.5);
+                }
+
+                @include mq(sp) {
+                    right: calc((100vw - #{mycalcSP(325)}) * -0.5);
+                }
+            }
+        }
+
+        &_figure {
+            order: -1;
+
+            &_img {
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+}
+
+
+// 利用例
+.lo_half_figure_left {
+    @include lo_half_figure(left, 1050, 700, 385, 125, 40);
+}
+
+.lo_half_figure_right {
+    @include lo_half_figure(right, 1050, 700, 385, 125, 40);
+}
+
+.contents_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    @extend .sec;
+
+    @include mq(sp) {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+.contents_main {
+    @include responsive((width: 840,
+        ));
+
+    @include mq(sp) {
+        width: 100%;
+    }
+
+    .contents {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+
+        @include mq(sp) {
+            padding: mycalcSP(0 36);
+        }
+    }
+}
+
+.contents_inner {
+    width: 100%;
+    @include responsive((padding-top: 296,
+        ));
+
+    @include mq(sp) {
+        padding-top: mycalcSP(114);
+    }
+
+    .contents {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+
+        @include mq(sp) {
+            padding: 0;
+        }
+    }
+}
+
+.contents_side {
+    @include responsive((width: 282,
+        ));
+
+    @include mq(sp) {
+        width: 100%;
+    }
+}

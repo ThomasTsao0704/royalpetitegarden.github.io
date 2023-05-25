@@ -1,0 +1,87 @@
+/*
+ * breadcrumb.scss
+ *
+ * パンクズリスト用コンポーネント
+ */
+
+.breadcrumb {
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    @include responsive((top: 188,
+            padding: 0 157,
+        ));
+
+    @include mq(sp) {
+        display: none;
+        top: mycalcSP(188);
+        padding: mycalcSP(0 24);
+    }
+
+    &_list {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 auto;
+        line-height: 1;
+        @include flex(row, flex-start, center, none, wrap);
+
+        &_item {
+            position: relative;
+            color: $c_gray;
+            font-family: $f_en;
+
+            &:not(:last-child) {
+                @include responsive((margin-right: 112,
+                    ));
+
+                @include mq(sp) {
+                    margin-right: mycalcSP(112);
+                }
+
+                &:after {
+                    content: "";
+                    background: $c_border;
+                    position: absolute;
+                    display: block;
+                    top: 50%;
+                    @include responsive((width: 80,
+                            height: 1,
+                            right: -96,
+                        ));
+
+                    @include mq(sp) {
+                        width: mycalcSP(80);
+                        height: mycalcSP(1);
+                        right: mycalcSP(-96);
+                    }
+                }
+            }
+
+            &:last-child {
+                opacity: .5;
+            }
+
+            &_link {
+                color: $c_inc_black;
+                position: relative;
+
+                @include mq(sp) {}
+            }
+
+            &_txt {
+                letter-spacing: 0;
+                color: $c_brown;
+                @include responsive((font-size: 14,
+                        line-height: 14,
+                    ));
+
+                @include mq(sp) {
+                    font-size: mycalcSP(14);
+                    line-height: mycalcSP(14);
+                }
+            }
+        }
+    }
+}
